@@ -1,5 +1,7 @@
 {
   "name": "UrbanTeam",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

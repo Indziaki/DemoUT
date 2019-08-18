@@ -1,14 +1,133 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <div class="ion-padding">
-    The world is your oyster.
-    <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">docs</a> will be your guide.</p>
+  <ion-toolbar>
+    <ion-segment color="secondary" (ionChange)="getView($event)">
+      <ion-segment-button value="friendly">
+        <ion-label>Amistosos</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="tournament">
+        <ion-label>Torneos</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <div>
+    <div style="text-align: center">
+      <ion-chip color="primary" (click)="select(1)" [outline]="selected!=1">
+        <ion-label>Deporte</ion-label>
+      </ion-chip>
+      <ion-chip color="primary" (click)="select(2)" [outline]="selected!=2">
+        <ion-label>Ubicación</ion-label>
+      </ion-chip>
+      <ion-chip color="primary" (click)="select(3)" [outline]="selected!=3">
+        <ion-label>Cancha</ion-label>
+      </ion-chip>
+      <ion-chip color="primary" (click)="select(4)" [outline]="selected!=4">
+        <ion-label>Favorito</ion-label>
+      </ion-chip>
+    </div>
+    <ion-card>
+        <ion-item>
+          <p>Confirmar resultados</p>
+        </ion-item>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Mi equipo
+              </ion-col>
+              <ion-col>
+                Contrario
+              </ion-col>
+              <ion-col>
+                12/12/2018
+              </ion-col>
+            </ion-row>
+
+            <ion-row *ngFor="let score of scores">
+              <ion-col size="8">
+                <div style="display: flex;flex-wrap: nowrap;align-items: center; justify-content: center">
+                  <img class="logo-team" [src]="score.first.logo">
+                  <span class="score" [class.winner]="score.first.score>score.second.score && score.first.score!=score.second.score">{{score.first.score}}</span>
+                  <span class="inter">:</span>
+                  <span class="score" [class.winner]="score.first.score<score.second.score && score.first.score!=score.second.score">{{score.second.score}}</span>
+                  <img class="logo-team" [src]="score.second.logo">
+                  <ion-icon name="arrow-dropright"></ion-icon>
+                </div>
+              </ion-col>
+              <ion-col size="4" class="options-results">
+                <ion-icon color="success" name="checkmark-circle"></ion-icon>
+                <ion-icon color="warning" name="close-circle"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Mi equipo
+              </ion-col>
+              <ion-col>
+                Contrario
+              </ion-col>
+              <ion-col>
+                12/12/2018
+              </ion-col>
+            </ion-row>
+
+            <ion-row *ngFor="let score of scores">
+              <ion-col size="8">
+                <div style="display: flex;flex-wrap: nowrap;align-items: center; justify-content: center">
+                  <img class="logo-team" [src]="score.first.logo">
+                  <span class="score" [class.winner]="score.first.score>score.second.score && score.first.score!=score.second.score">{{score.first.score}}</span>
+                  <span class="inter">:</span>
+                  <span class="score" [class.winner]="score.first.score<score.second.score && score.first.score!=score.second.score">{{score.second.score}}</span>
+                  <img class="logo-team" [src]="score.second.logo">
+                  <ion-icon name="arrow-dropright"></ion-icon>
+                </div>
+              </ion-col>
+              <ion-col size="4" class="options-results">
+                <ion-icon color="success" name="checkmark-circle"></ion-icon>
+                <ion-icon color="warning" name="close-circle"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+      <ion-card>
+        <ion-item>
+          <ion-icon name="football"></ion-icon>
+          <ion-label text-wrap>
+              <ion-text>Ciudad de México | Cancha Santa Fe</ion-text>
+              <p><small>Fecha: 12/10/2019</small></p>
+          </ion-label>
+        </ion-item>
+      
+        <ion-card-content>
+          <p>{{name}}</p>
+
+          <ion-row style="display: flex;flex-wrap: nowrap;align-items: center; justify-content: center" class="lastGame">
+              <ion-col size="3">
+                <img class="logo-team" [src]="lastGame.first.logo">
+                <p>{{lastGame.first.name}}</p>
+              </ion-col>
+              <ion-col style="text-align: center" size="6">
+                  <span class="score" [class.winner]="lastGame.first.score>lastGame.second.score && lastGame.first.score!=lastGame.second.score">{{lastGame.first.score}}</span>
+                  <span class="inter">:</span>
+                  <span class="score" [class.winner]="lastGame.first.score<lastGame.second.score && lastGame.first.score!=lastGame.second.score">{{lastGame.second.score}}</span>
+              </ion-col>
+              <ion-col size="3">
+                <img class="logo-team" [src]="lastGame.second.logo">
+                <p>{{lastGame.second.name}}</p>
+              </ion-col>
+            </ion-row>
+            <p>Score UT: <span [ngClass]="{'win': score > 0, 'loss': score <= 0}">{{score > 0 ? '+' : '-'}}{{score}}</span></p>
+            <p><small>Creador: {{creador}}</small></p>
+            <ion-item></ion-item>
+            <p>&nbsp;</p>
+            <div class="social-line">
+              <ion-icon name="heart-empty"></ion-icon>
+              <ion-icon name="chatboxes"></ion-icon>
+              <ion-icon name="share-alt"></ion-icon>
+            </div>
+        </ion-card-content>
+      </ion-card>
   </div>
 </ion-content>

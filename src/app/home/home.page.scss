@@ -1,1 +1,53 @@
-
+.options-results{
+  text-align: center;
+  font-size: 2.3em;
+}
+.logo-team{
+  max-width: 30px;
+  max-height: 30px;
+  margin: 0 5px;
+}
+.score{
+  width: 25px;
+  text-align: center;
+  font-size: 2em;
+  color: white;
+  background-color: var(--ion-color-primary);
+  opacity: 0.6;
+  border-radius: 2px;
+}
+.inter{
+  font-size: 2.3em;
+  color: var(--ion-color-primary);
+}
+.winner{
+  opacity: 1;
+}
+.lastGame .logo-team{
+  max-width: 90%;
+  max-height: 90%;
+}
+.lastGame .score{
+  width: 70px;
+  font-size: 4.5em;
+}
+.lastGame .inter{
+  font-size: 5em;
+}
+.win{
+  background-color: var(--ion-color-success);
+  padding: 2px 30px;
+  border-radius: 2px;
+  color: white;
+}
+.loss{
+  background-color: var(--ion-color-danger);
+  padding: 2px 30px;
+  border-radius: 2px;
+  color: white;
+}
+.social-line{
+  display: flex;
+  font-size: 1.5em;
+  justify-content: space-between;
+}
